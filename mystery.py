@@ -1,10 +1,10 @@
 import re
 
-def process_sentence(sentence):
-    words_list = sentence.split(" ")
+def process_sentence(str):
+    words_list = str.split(" ")
     clean_words = []
-    for sentence in words_list:
-        word = re.sub("[.!?]", "", sentence)
+    for str in words_list:
+        word = re.sub("[.!?]", "", str)
         clean_words.append(word)
     word = {}
     for stuff in clean_words:
@@ -14,8 +14,8 @@ def process_sentence(sentence):
             word[len(stuff)]=[stuff]
     words_list = {}
     for clean_words in word:
-        for sentence in word[clean_words]:
-            if len(sentence) % 2 == 1:
+        for str in word[clean_words]:
+            if len(str) % 2 == 1:
                 words_list[clean_words] = word[clean_words]
         else:
             continue
