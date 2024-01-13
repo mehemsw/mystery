@@ -1,30 +1,30 @@
 import re
 
-def my_func(x):
-    a = x.split(" ")
-    y = []
-    for x in a:
-        x2 = re.sub("[.!?]", "", x)
-        y.append(x2)
-    z = {}
-    for stuff in y:
-        if len(stuff) in z: 
-            z[len(stuff)] = z[len(stuff)] + [stuff]
+def process_sentence(sentence):
+    words_list = sentence.split(" ")
+    clean_words = []
+    for sentence in words_list:
+        word = re.sub("[.!?]", "", sentence)
+        clean_words.append(word)
+    word = {}
+    for stuff in clean_words:
+        if len(stuff) in word: 
+            word[len(stuff)] = word[len(stuff)] + [stuff]
         else:
-            z[len(stuff)]=[stuff]
-    a = {}
-    for y in z:
-        for x in z[y]:
-            if len(x) % 2 == 1:
-                a[y] = z[y]
+            word[len(stuff)]=[stuff]
+    words_list = {}
+    for clean_words in word:
+        for sentence in word[clean_words]:
+            if len(sentence) % 2 == 1:
+                words_list[clean_words] = word[clean_words]
         else:
             continue
-    return a
+    return words_list
 
 
 
 
 # Tests
-assert(my_func("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
-assert(my_func("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
-print(my_func("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
+assert(process_sentence("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
+assert(process_sentence("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
+print(process_sentence("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
