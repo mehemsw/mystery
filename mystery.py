@@ -3,8 +3,8 @@ import re
 def clean_words_list(str):
     words_list = str.split(" ")
     clean_words = []
-    for str in words_list:
-        word = re.sub("[.!?]", "", str)
+    for x in words_list:
+        word = re.sub("[.!?]", "", x)
         clean_words.append(word)
     return clean_words
 
@@ -29,8 +29,7 @@ def odd_length_words(word_lengths):
 
 
 
-
 # Tests
-assert(process_sentence("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
-assert(process_sentence("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
-print(process_sentence("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
+assert(clean_words_list("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
+assert(clean_words_list("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
+print(clean_words_list("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
