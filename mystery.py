@@ -1,6 +1,6 @@
 import re
 
-def my_func(x):
+def dictionary(x):
     a = x.split(" ")
     y = []
     for x in a:
@@ -25,6 +25,6 @@ def my_func(x):
 
 
 # Tests
-assert(my_func("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
-assert(my_func("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
-print(my_func("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
+assert(dictionary"This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
+assert(dictionary("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
+print(dictionary("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
