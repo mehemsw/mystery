@@ -1,25 +1,31 @@
 import re
 
-def process_sentence(str):
+def clean_words_list(str):
     words_list = str.split(" ")
     clean_words = []
     for str in words_list:
         word = re.sub("[.!?]", "", str)
         clean_words.append(word)
-    word = {}
-    for stuff in clean_words:
-        if len(stuff) in word: 
-            word[len(stuff)] = word[len(stuff)] + [stuff]
+    return clean_words
+
+def group_words_length(clean_words):
+    word_lengths = {}
+    for word in clean_words:
+        if len(word) in word_lengths: 
+            word_lengths[len(word)] = word_lengths[len(word)] + [word]
         else:
-            word[len(stuff)]=[stuff]
-    words_list = {}
-    for clean_words in word:
-        for str in word[clean_words]:
+            word_lengths[len(word)] = [word]
+    return word_lengths
+
+def odd_length_words(word_lengths):
+    odd_words_list = {}
+    for clean_words in word_lengths:
+        for x in word_lengths[clean_words]:
             if len(str) % 2 == 1:
-                words_list[clean_words] = word[clean_words]
+                word_lengths[clean_words] = word_lengths[clean_words]
         else:
             continue
-    return words_list
+    return odd_words_list
 
 
 
